@@ -1,0 +1,299 @@
+.facetogif {
+  display: none;
+  text-align: center;
+}
+.facetogif video {
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+}
+
+.facetogif video ~ .gif-maker-controls {
+  opacity: 0;
+  transition: opacity 0.2s, visibility 0s 0.2s;
+  visibility: hidden;
+}
+
+.facetogif video[src] ~ .gif-maker-controls,
+.facetogif .gif-maker-controls.busy {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.2s, visibility 0s 0s;
+}
+
+.facetogif .gif-maker-controls {
+   overflow: hidden;
+   height: 2.6em;
+ }
+
+.facetogif .gif-maker-controls .recording {
+  width: 77%;
+  margin-right: 3%;
+  float: left;
+}
+
+.facetogif .gif-maker-controls .pause-recording {
+  display: none;
+  width: 20%;
+  float: left;
+  transition: all 0.2s, display 0s 0.21s;
+}
+/*.facetogif .gif-maker-controls .recording ~ .pause-recording {
+  display: block;
+}*/
+
+.facetogif canvas {
+  display: none;
+}
+
+.facetogif .ui-button {
+  text-decoration: none;
+  border-radius: 0.1em;
+  border: 0;
+  width: 100%;
+  cursor: pointer;
+  color: #fff;
+  font-size: 1em;
+  line-height: 2;
+  display: block;
+  transition: all 0.2s;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+}
+
+.facetogif .ui-button:hover {
+  background: hsla(210, 30%, 60%, 1);
+}
+
+.facetogif .ui-button[disabled], .ui-button, .ui-button[disabled]:hover {
+  background: hsla(0,0%, 50%, 1);
+}
+
+.facetogif .ui-button[disabled].processing, .ui-button.processing {
+  background-color: hsla(200, 30%, 60%, 1);
+  background-image: -webkit-gradient(linear, 0 0, 100% 100%,
+              color-stop(.15, rgba(255, 255, 255, .1)), color-stop(.15, transparent),
+              color-stop(.5, transparent), color-stop(.5, rgba(255, 255, 255, .1)),
+              color-stop(.75, rgba(255, 255, 255, .1)), color-stop(.75, transparent),
+              to(transparent));
+  background-image: -webkit-linear-gradient(-45deg, rgba(255, 255, 255, .1) 25%, transparent 25%,
+            transparent 50%, rgba(255, 255, 255, .1) 50%, rgba(255, 255, 255, .1) 75%,
+            transparent 75%, transparent);
+  background-image: -moz-linear-gradient(-45deg, rgba(255, 255, 255, .1) 25%, transparent 25%,
+            transparent 50%, rgba(255, 255, 255, .1) 50%, rgba(255, 255, 255, .1) 75%,
+            transparent 75%, transparent);
+  background-image: -ms-linear-gradient(-45deg, rgba(255, 255, 255, .1) 25%, transparent 25%,
+            transparent 50%, rgba(255, 255, 255, .1) 50%, rgba(255, 255, 255, .1) 75%,
+            transparent 75%, transparent);
+  background-image: linear-gradient(-45deg, rgba(255, 255, 255, .1) 25%, transparent 25%,
+            transparent 50%, rgba(255, 255, 255, .1) 50%, rgba(255, 255, 255, .1) 75%,
+            transparent 75%, transparent);
+  background-size: 1em 1em;
+  background-position: 0 0;
+  -webkit-animation: slide-processing-bg infinite 0.4s linear;
+  -ms-animation: slide-processing-bg infinite 0.4s linear;
+  -moz-animation: slide-processing-bg infinite 0.4s linear;
+  animation: slide-processing-bg infinite 0.4s linear;
+}
+
+@keyframes slide-processing-bg {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0.9em 0;
+  }
+}
+@-webkit-keyframes slide-processing-bg {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0.999em 0;
+  }
+}
+@-moz-keyframes slide-processing-bg {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0.999em 0;
+  }
+}
+
+.facetogif .ui-button[disabled] {
+  cursor: no-drop;
+  opacity: 1;
+}
+
+.facetogif .ui-button:active {
+  box-shadow: inset 0 -0.1em 1em rgba(0, 0, 1, 0.5);
+}
+
+.facetogif .request-stream.clicked {
+  line-height: 1;
+  font-size: 0.5em;
+  opacity: 0.5;
+}
+.facetogif .request-stream.clicked:hover {
+  opacity: 1;
+  font-size: 1em;
+  line-height: 2;
+}
+
+.facetogif .request-stream.clicked.streaming {
+  background-color: hsla(0, 30%, 50%, 1);
+}
+
+.facetogif .ui-button.to-danger:hover {
+  background-color: hsla(0, 30%, 50%, 1);
+}
+
+.facetogif .ui-button.to-imgur:hover, .ui-button.to-imgur.uploaded {
+  background-color: hsla(83, 68%, 45%, 1);
+}
+
+.facetogif .recording-toggle {
+  background: hsla(120, 25%, 50%, 1);
+}
+
+.facetogif .generated-gif {
+  position: relative;
+  text-align: center;
+}
+
+.facetogif .generated-gif .controls {
+  position: absolute;
+  right: 1.5em;
+  top: 2.5em;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.facetogif .ui-button.control {
+  padding: 0 0.7em;
+  display: inline-block;
+  width: auto;
+}
+
+.facetogif .generated-gif:hover .controls {
+  opacity: 1;
+}
+
+.facetogif .separate {
+  border-top: 0.1em solid hsla(0,0%, 80%, 1);
+  display: block;
+  padding: 2em 1em 0;
+  margin: 2em -1em 0;
+}
+
+.facetogif .recording-indicator {
+  background: hsla(0, 50%, 50%, 0.5);
+  position: absolute;
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+  right: 0.5em;
+  margin-top: 0.5em;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.facetogif .recording-indicator.on {
+  opacity: 1;
+}
+
+.facetogif .generated-img {
+  width: 640px;
+  height: 480px;
+}
+
+.facetogif .square .generated-img {
+  width: 250px;
+  height: 250px;
+}
+
+.facetogif .small .generated-img {
+  width: 200px;
+  height: 150px;
+}
+
+.facetogif .textish-form {
+  display: inline-block;
+}
+
+.facetogif .ui-text {
+  border: none;
+  background: transparent;
+  display: inline;
+  font-size: 1em;
+}
+
+.facetogif .size-setting {
+  display: inline-block;
+  background: hsla(0,0%, 50%, 1);
+  width: 1em;
+  height: 1em;
+  opacity: 0.5;
+  cursor: pointer;
+  position: relative;
+  z-index: 3;
+}
+
+.facetogif .size-setting.small {
+  width: 1.5em;
+  height: 1em;
+}
+
+.facetogif .size-setting.square {
+  width: 1.7em;
+  height: 1.7em;
+}
+
+.facetogif .size-setting.normal {
+  width: 2em;
+  height: 1.5em;
+}
+.facetogif .size-setting.full {
+  width: 3em;
+  height: 2.25em;
+}
+
+.facetogif input[name="gif-size"] {
+  display: none;
+}
+.facetogif input[name="gif-size"]:checked + .size-setting {
+  opacity: 1;
+}
+.facetogif .size-setting:after {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  background: transparent;
+  border: 0.1em solid white;
+  content: "";
+  display: block;
+  width: 80%;
+  height: 80%;
+  top: 10%;
+  left: 10%;
+  position: relative;
+}
+
+.facetogif .gif-maker-size-controls {
+  opacity: 0;
+  display: none;
+  transition: opacity 0.3s;
+  text-align: right;
+  padding-right: 0.8em;
+  padding-bottom: 0.6em;
+  margin-top: -3.2em;
+}
+/*
+.facetogif video[src]:hover ~ .gif-maker-size-controls,*/
+.facetogif video[src] ~ .gif-maker-size-controls:hover {
+  opacity: 1;
+}
+
+.facetogif video[data-state] ~ .gif-maker-size-controls{
+  display: none;
+}

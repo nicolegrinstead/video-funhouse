@@ -1,0 +1,32 @@
+{
+  "name": "nko4-devcomo",
+  "version": "0.0.1",
+  "description": "devcomo",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:nko4/devcomo.git"
+  },
+  "dependencies": {
+    "mongoose": "*",
+    "express": "3.4.4",
+    "ejs": "0.8.4",
+    "express-ejs-layouts": "0.3.1",
+    "nko": "*",
+    "underscore": "*",
+    "connect": "2.11.0"
+  },
+  "devDependencies": {
+    "grunt": "0.4.1",
+    "grunt-contrib-jshint": "0.7.1",
+    "grunt-contrib-concat": "0.3.0",
+    "grunt-contrib-uglify": "0.2.6",
+    "grunt-contrib-requirejs": "0.4.1"
+  },
+  "engines": {
+    "node": "0.10.x"
+  }
+}

@@ -1,0 +1,208 @@
+
+html {
+  height: 100%;
+}
+body {
+  background-color: #eee;
+  background-image: linear-gradient(90deg, transparent 50%, rgba(255,255,255,.5) 50%);
+  background-size: 50px 50px;
+  min-height: 100%;
+}
+body.drag {
+  background: green;
+}
+a[download] {
+  font-size: 20px;
+}
+.format-buttons .btn {
+  padding-left: 4px;
+  padding-right: 4px;
+}
+input[type="file"]{
+display: inline-block;
+margin-left: 10px;
+}
+
+.before-ready, .ready .after-ready {
+  display: block;
+}
+.after-ready, .ready .before-ready {
+  display: none;
+}
+.header {
+  background-color: rgba(86, 61, 124,0.75);
+}
+.main-description {
+  margin-top: -10px;
+  background: rgba(86, 61, 124,0.15);
+  padding: 10px;
+}
+#main-container {
+  background: rgba(255, 255, 255, .9);
+  padding: 10px 20px;
+}
+#header {
+  float: left;
+  font-family: 'Viga', sans-serif;
+  color: rgb(205, 191, 227);
+  margin-top: 5px;
+}
+.navbar-nav > li > a {
+  background: rgba(255, 255, 255, 0.2);
+  color: orange;
+}
+#h1,h2,h3 {
+    font-family: 'Viga', sans-serif;
+}
+#p {
+  font-family: sans-serif;
+}
+#links {
+  float:right;
+}
+#links li {
+  display: inline-block;
+  margin:0;
+  padding:0;
+  margin-left: 10px;
+}
+#staging-container {
+  position: relative;
+  display: none;
+}
+#staging-container big {
+  font-size: 18px;
+}
+#staging-container .cancel {
+  position: absolute;
+  right:0;
+  color: red;
+}
+#staging-command {
+  width: 100%;
+  display: none;
+}
+#console {
+  max-height: 200px;
+  overflow-y: auto;
+}
+#not-supported-message {
+  display: none;
+}
+
+#staging-container code {
+  color: #7325C7;
+  white-space: pre-line;
+  word-break: break-all;
+  display: block;
+}
+#staging-container-inner {
+  padding: 0 10px;
+  margin: 10px;
+  position: relative;
+}
+#staging-container-inner a {
+  position: absolute;
+  top: -19px;
+  right: 22px;
+  background: #f9f2f4;
+  padding: 2px;
+}
+#loader, .loader {
+  position:absolute;
+  top: 10px;
+  right: 15px;
+}
+#output-stuff {
+  position: relative;
+  display: none;
+}
+#output img {
+  box-sizing: border-box;
+  -box-sizing: border-box;
+  padding: 10px;
+  max-width: 100%;
+}
+.output-container {
+  background: rgba(255, 0, 0, .1);
+  padding: 10px;
+  margin: 10px;
+  position:relative;
+}
+.sidebar {
+  position: relative;
+}
+.sidebar .overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: white;
+  opacity: .8;
+  z-index: 10;
+}
+.sidebar .btn-group {
+  width: 100%;
+}
+.sidebar p {
+  padding:0px 15px;
+}
+.sidebar ul {
+  list-style:none;
+  margin:10px 10px;
+  padding:0px;
+}
+.sidebar ul > li {
+  display:block;
+  padding:6px;
+  cursor: pointer;
+  background: #EEE;
+  border: 1px solid #aaa;
+  border-radius: 1px;
+  margin-top:4px;
+}
+.sidebar ul > li.first-child {
+  margin-top: none;
+}
+.sidebar ul > li.active {
+  background: red;
+}
+.dragzone {
+  border: solid 1px #ccc;
+  min-height: 400px;
+}
+
+#output-screenshots {
+  /*overflow-x: auto;
+  max-width: 1000px;*/
+}
+#welcome-message {
+}
+
+#app-container {
+  margin-bottom: 50px;
+}
+
+#frame-container {
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+/* http://charliepark.org/bootstrap_buttons/ */
+.btn {
+  background-color: hsl(15, 25%, 66%) !important;
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#dccbc5", endColorstr="#bd9d92");
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#dccbc5), to(#bd9d92));
+  background-image: -moz-linear-gradient(top, #dccbc5, #bd9d92);
+  background-image: -ms-linear-gradient(top, #dccbc5, #bd9d92);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #dccbc5), color-stop(100%, #bd9d92));
+  background-image: -webkit-linear-gradient(top, #dccbc5, #bd9d92);
+  background-image: -o-linear-gradient(top, #dccbc5, #bd9d92);
+  background-image: linear-gradient(#dccbc5, #bd9d92);
+  border-color: #bd9d92 #bd9d92 hsl(15, 25%, 62%);
+  color: #333 !important;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.26);
+  -webkit-font-smoothing: antialiased;
+}

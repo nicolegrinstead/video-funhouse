@@ -1,0 +1,56 @@
+
+<h1>FFMPEG TEST</h1>
+
+<pre></pre>
+<script src="../ffmpeg.js"></script>
+
+<script>
+  var data;
+  var canvas = document.createElement("canvas");
+  var ctx = canvas.getContext('2d');
+  var img = document.createElement("img");
+  img.src = "moz.jpg";
+  img.onload = function() {
+    canvas.width = img.width;
+    canvas.height = img.height;
+    ctx.drawImage(img, 0, 0);
+    document.body.appendChild(canvas);
+    data = dataURItoArrayBuffer(canvas.toDataURL("image/jpeg"));
+    run();
+  }
+
+  // http://stackoverflow.com/questions/4998908/convert-data-uri-to-file-then-append-to-formdata
+  function dataURItoArrayBuffer(dataURI) {
+    // convert base64 to raw binary data held in a string
+    // doesn't handle URLEncoded DataURIs - see SO answer #6850276 for code that does this
+    var byteString = atob(dataURI.split(',')[1]);
+
+    // separate out the mime component
+    var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0]
+
+    // write the bytes of the string to an ArrayBuffer
+    var ab = new ArrayBuffer(byteString.length);
+    var ia = new Uint8Array(ab);
+    for (var i = 0; i < byteString.length; i++) {
+      ia[i] = byteString.charCodeAt(i);
+    }
+    return ia;
+  }
+
+
+  function run() {
+    console.log(data);
+    var mod = {
+      print: function (text) {
+        document.querySelector("pre").textContent += "\n" + text;
+      },
+      printErr: function (text) {
+        document.querySelector("pre").textContent += "\n" + text;
+      },
+      'arguments': ['-i', 'input.jpg', 'output/output.jpeg'],
+      'fileData': data,
+      'fileName': 'input.jpg'
+    };
+    ffmpeg_run(mod);
+  }
+</script>

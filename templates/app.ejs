@@ -1,0 +1,201 @@
+
+<div class="row">
+<p class="main-description"><strong>What is this?</strong> This is FFmpeg, compiled into JavaScript and running in your browser.  Really?  Yes, really! read more on our <a href="/about">about page</a>.
+</p>
+</div>
+
+<div id="app-container">
+  <div id="app">
+
+    <div class="row">
+      <div class="col-md-3 sidebar" id="fake-form">
+        <div class="overlay"></div>
+
+        <h4>Formats</h4>
+
+        <div class="btn-group format-buttons" data-toggle="buttons">
+          <label class="btn btn-primary active">
+            <input data-format="gif" type="radio"> gif
+          </label>
+          <label class="btn btn-primary">
+            <input data-format="mov" type="radio"> mov
+          </label>
+          <label class="btn btn-primary">
+            <input data-format="flv" type="radio"> flv
+          </label>
+          <label class="btn btn-primary">
+            <input data-format="mp4" type="radio"> mp4
+          </label>
+          <label class="btn btn-primary">
+            <input data-format="wmv" type="radio"> wmv
+          </label>
+          <label class="btn btn-primary">
+            <input data-format="mpeg" type="radio"> mpeg
+          </label>
+        </div>
+
+        <h4>Filters</h4>
+
+        <div class="btn-group btn-group-vertical" data-toggle="buttons">
+          <label class="btn btn-primary">
+            <input data-filter="negate" type="checkbox"> Negative
+          </label>
+          <label class="btn btn-primary">
+            <input data-filter="vflip" type="checkbox"> Vertical Flip
+          </label>
+          <label class="btn btn-primary">
+            <input data-filter="hflip" type="checkbox"> Horizontal Flip
+          </label>
+          <label class="btn btn-primary">
+            <input data-filter="unsharp=luma_msize_x=7:luma_msize_y=7:luma_amount=2.5" type="checkbox"> Sharpen
+          </label>
+          <label class="btn btn-primary">
+            <input data-filter="unsharp=7:7:-2:7:7:-2" type="checkbox"> Blur
+          </label>
+
+          <label class="btn btn-primary">
+            <input data-filter="setpts=(1/2)*PTS" type="checkbox"> Fast Motion
+          </label>
+
+          <label class="btn btn-primary">
+            <input data-filter="setpts=(2/1)*PTS" type="checkbox"> Slow Motion
+          </label>
+        </div>
+
+        <h4>Scale</h4>
+
+        <p>How would you like to scale the video? <small>Protip: Keeping a slider to the far left maintains the aspect ratio.</small></p>
+        <div>
+          <label id="resolution-string"></label>
+          <p id="scales">
+            <code>Width:&nbsp;</code> &nbsp; <input type="range" id="scale-width" value="-1" min="-1" /><br />
+            <code>Height:</code> &nbsp; <input type="range" id="scale-height" value="-1" min="-1" />
+          </p>
+        </div>
+
+        <div id="time-container">
+
+        <h4>Time</h4>
+
+        <p>How much time should we process? It is generally not recommended to
+        do a whole video while demoing this app, as it can take a while.</p>
+        <br />
+        <label id="slider-label"></label>
+
+        <div id="slider-range"></div>
+      </div>
+      </div>
+
+      <div class="dragzone col-md-9">
+
+        <div id="output-stuff">
+
+          <div id="output-screenshots"></div>
+          <div id="output"></div>
+
+          <div id="metadata-container" class="output-container">
+            <h4>Metadata</h4>
+            <img class="loader" src="/img/load.gif">
+            <pre class="console"></pre>
+          </div>
+
+          <!-- <div class="output-container">
+            <h4>Screenshots</h4>
+            <pre id="screenshot-console"></pre>
+          </div> -->
+
+          <div class="output-container">
+            <h4>Video Conversion</h4>
+
+            <div id="staging-container">
+              <big>← Use the options on the left to make the video more fun!</big>
+
+              <div id="staging-container-inner">
+                <a id="staging-command-toggle" href="#">modify (advanced)</a>
+                <code id="staging-command-preview"></code>
+                <input id="staging-command" />
+              </div>
+
+              <a class="cancel" href= "#">cancel</a>
+              <button class="btn btn-large" id="go">Go</button>
+            </div>
+
+            <img id="loader" name="loader" src="/img/load.gif">
+            <pre id="console">Awaiting command</pre>
+          </div>
+
+        </div>
+        <div id="welcome-message">
+          <h3>Start here!</h3>
+
+          <p class="before-ready">
+            Please be patient while the ffmpeg file loads :)
+            <img src="/img/load.gif">
+          </p>
+          <div class="after-ready">
+          <p>Great, everything is looking good and we are ready to do some video processing!  You have some options. You can <strong>drag a video onto the
+          page</strong>, select it from the <strong>file picker</strong> below,
+          or even <strong>copy and paste</strong> it in: <input id="picker" type="file"></p>
+
+          <br />
+          <br />
+
+          <p><strong>Don't have a video handy?</strong> No problem, just use your <button id="process-sample-webcam">webcam</button>, borrow a <button id="process-sample-video">sample video</button> or
+          <button id="process-sample-image">sample image</button> to try it
+          out.</p>
+          </div>
+
+          <hr>
+        </div>
+
+    <!-- <div id="controls">
+      <input id="command" value="-help"> <button id="runcommand">Run Command
+      With These Arguments</button>
+    </div>
+          <p><input id="picker" type="file"></p>
+      --><!-- <video controls="">
+          <source src="//upload.wikimedia.org/wikipedia/commons/transcoded/7/75/Big_Buck_Bunny_Trailer_400p.ogg/Big_Buck_Bunny_Trailer_400p.ogg.360p.webm" />
+          <p>The video previe is not supported in your browser, but you can still process it and download in a format you can watch on your computer.</p>
+        </video> -->
+
+      </div>
+    </div>
+  </div>
+
+
+
+    <div class="facetogif">
+      <button class="ui-button request-stream" id=put-your-face-here>put your face here</button>
+      <span class=recording-indicator id=recording-indicator></span>
+      <video autoplay height=480 width=640 ></video>
+      <div class="gif-maker-size-controls">
+        <input id=gif-size-small-checkbox name=gif-size tabindex=-1 type=radio value=small ><label class="size-setting small" for=gif-size-small-checkbox title="200x150"></label>
+        <input id=gif-size-square-checkbox name=gif-size tabindex=-1 type=radio value=square ><label class="size-setting square" for=gif-size-square-checkbox title="250x250"></label>
+        <input checked id=gif-size-normal-checkbox name=gif-size tabindex=-1 type=radio value=normal ><label class="size-setting normal" for=gif-size-normal-checkbox title="320x240 (default)"></label>
+        <input id=gif-size-full-checkbox name=gif-size tabindex=-1 type=radio value=full ><label class="size-setting full" for=gif-size-full-checkbox title="640x480"></label>
+      </div>
+      <div class="gif-maker-controls">
+        <button class="ui-button recording-toggle" id=start-recording>start recording 3 second video</button>
+        <button class="ui-button pause-recording recording-toggle" id=pause-recording>||</button>
+      </div>
+      <output id=gifs-go-here></output>
+      </div>
+    </div>
+
+    <div id="controls-template" class="controls">
+      <a class="ui-button download img control" download=your-giffed-face.gif>download gif</a>
+      <a class="ui-button upload img control to-imgur" href=http://imgur.com target=_blank>imgur</a>
+      <a class="ui-button remove img control to-danger">x</a>
+    </div>
+  <script src=/js/facetogif/vendor/gif.js></script>
+  <script src=/js/facetogif/app.js?v=1></script>
+
+  <div id="not-supported-message"></div>
+</div><!-- /app-container -->
+<script id="not-supported" type="text/template">
+  Sorry, this portion of the demo is not supported on your browser.
+  Either you are on a mobile device, so we aren't downloading a huge JS file out of concern for your bandwidth, or your browser doesn't support of some the needed features.
+</script>
+
+<script src="/js/app/form.js"></script>
+<script src="/js/app/app.js"></script>

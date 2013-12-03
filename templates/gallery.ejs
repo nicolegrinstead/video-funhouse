@@ -1,0 +1,35 @@
+<h2>
+Everyone's favorite clips<br/>
+<button type="button" class="btn btn-primary"><a href="/gallery/top">See Most Popular</a></button>
+<button type="button" class="btn btn-primary"><a href="/gallery/recent">See Most Recent</a></button>		
+</h2>
+
+<div style="width: 100%;" class="gram-container">
+	<div id="container" style ="text-align: center">
+		<%for (var i=0; i< videos.length; i++){ %>
+			<div data-id="<%= videos[i].lookup%>" style="display: inline-block;"> 
+				<div class="span3 offset1">
+					<a href="/view/<%- videos[i].lookup %>">
+						<!--video splash-->
+					</a>
+					<div class="video" style ="text-align: center">
+						<img src="/user/<%- videos[i].id %>" width="200px"/>
+						<div>
+							<a class="btn-mini post" href="#" data-id='<%= videos[i].id%>' data-url='/upVote/'>
+								<span class="glyphicon glyphicon-thumbs-up"></span>
+							</a>		
+							<a class="btn-mini post" href="#" data-url='/downVote/' data-id='<%= videos[i].id%>'>
+								<span class="glyphicon glyphicon-thumbs-down"></span>
+							</a>	
+							<a class="btn-mini" href="/view/<%= videos[i].id%>">
+								<span class="glyphicon glyphicon-resize-full"></span>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		<%}%>
+	</div>
+</div>
+
+

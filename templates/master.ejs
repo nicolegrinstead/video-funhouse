@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <title><%- title %></title>
+    <% settings.cssFiles.forEach(function(file) { %>
+      <link href="<%- file %>?v=<%= settings.version %>" rel="stylesheet" />
+    <% }); %>
+    <link rel="icon" type="image/png" href="../img/favicon.ico">
+  </head>
+  <body>
+
+    <div class="header">
+      <div class="clearfix container">
+        <h1 id="header"><a href="/app">Video FunHouse</a> <small>(v<%= settings.version %>)</small></h1>
+
+        <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+                <div id="frame-container"></div>
+            </li>
+            <li>
+              <a href="/">App</a>
+            </li>
+            <li>
+              <a href="/gallery/top">Gallery</a>
+            </li>
+            <li>
+              <a href="/about">About</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+
+    <div class="container" id="main-container">
+      <%- body %>
+    </div>
+
+    <script>
+      window.APP = window.APP || { };
+
+      WebFontConfig = {
+        google: { families: [ 'Viga::latin' ] }
+      };
+      (function() {
+        var wf = document.createElement('script');
+        wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+          '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+        wf.type = 'text/javascript';
+        wf.async = 'true';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(wf, s);
+      })();
+    </script>
+
+    <% settings.jsFiles.forEach(function(file) { %>
+      <script src='<%- file %>?v=<%= settings.version %>'></script>
+    <% }); %>
+    <%- script %>
+  </body>
+</html>
