@@ -1,7 +1,7 @@
 var express = require('express');
 var mongoose = require('mongoose');
 // https://github.com/nko4/website/blob/master/module/README.md#nodejs-knockout-deploy-check-ins
-require('nko')('B6wfVov2wbP6lTqT');
+//require('nko')('B6wfVov2wbP6lTqT');
 
 var app = express();
 var config = require('./config.js')(app);
