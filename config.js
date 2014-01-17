@@ -29,12 +29,12 @@ module.exports = function(app) {
     var port = 5000;
 
     app.configure('development', function(){
-        mongoose.connect("mongodb://secretnko4:sECretp4ssword@dharma.mongohq.com:10056/funhouse_production_back");
+        //mongoose.connect("mongodb://secretnko4:sECretp4ssword@dharma.mongohq.com:10056/funhouse_production_back");
         app.set("development", true);
     });
 
     app.configure('production', function(){
-        mongoose.connect("mongodb://secretnko4:sECretp4ssword@dharma.mongohq.com:10056/funhouse_production_back");
+        //mongoose.connect("mongodb://secretnko4:sECretp4ssword@dharma.mongohq.com:10056/funhouse_production_back");
         app.set("development", false);
     });
 
