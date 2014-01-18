@@ -25,7 +25,6 @@ module.exports = function(app) {
 
 
     var isDevelopment = (process.env.NODE_ENV !== 'production');
-    //var port = isDevelopment ? 3001 : 5000;
     var port = process.env.PORT || 5000;
 
     app.configure('development', function(){

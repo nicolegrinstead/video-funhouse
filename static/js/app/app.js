@@ -443,7 +443,6 @@ function getDownloadLink(fileData, fileName) {
 
   var saveLink;
   if (fileName.indexOf('gif') !== -1) {
-    saveLink = $("<button>Send to server</button>");
     saveLink.click(function() {
       if(saveLink.is(':disabled')){
         return;
