@@ -7,8 +7,4 @@
         return false;
     });
 
-    setTimeout(function() {
-    $("#frame-container").append('<iframe src="http://nodeknockout.com/iframe/devcomo" frameborder=0 scrolling=no allowtransparency=true width=115 height=25></iframe>');
-    }, 1000);
-
 })();
